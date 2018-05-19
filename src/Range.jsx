@@ -331,7 +331,9 @@ class Range extends React.Component {
       handle: handleGenerator,
       trackStyle,
       handleStyle,
+      terminalStyle,
       tabIndex,
+      terminals,
     } = this.props;
 
     const offsets = bounds.map(v => this.calcOffset(v));
@@ -374,6 +376,32 @@ class Range extends React.Component {
         />
       );
     });
+
+    if (terminals) {
+      tracks.unshift(
+          <Track
+            className={`${prefixCls}-track ${prefixCls}-track-start`}
+            vertical={vertical}
+            included={included}
+            offset={0}
+            length={offsets [0]}
+            style={terminalStyle}
+            key={0}
+          />
+      );
+
+      tracks.push(
+          <Track
+            className={`${prefixCls}-track ${prefixCls}-track-end`}
+            vertical={vertical}
+            included={included}
+            offset={offsets [offsets.length - 1]}
+            length={100 - offsets [offsets.length - 1]}
+            style={terminalStyle}
+            key={offsets.length + 1}
+          />
+      );
+    }
 
     return { tracks, handles };
   }
