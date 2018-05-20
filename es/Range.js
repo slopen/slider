@@ -329,6 +329,7 @@ var Range = function (_React$Component) {
         disabled = _props2.disabled,
         min = _props2.min,
         max = _props2.max,
+        terminals = _props2.terminals,
         handleGenerator = _props2.handle,
         trackStyle = _props2.trackStyle,
         handleStyle = _props2.handleStyle,
